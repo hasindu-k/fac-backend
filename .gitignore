@@ -109,6 +109,8 @@ ipch/
 *.opensdf
 *.sdf
 *.cachefile
+# Ignore cache files
+*.cache
 *.VC.db
 *.VC.VC.opendb
 
@@ -205,6 +207,7 @@ PublishScripts/
 # NuGet v3's project.json files produces more ignorable files
 *.nuget.props
 *.nuget.targets
+*.nuget.dgspec.json
 
 # Microsoft Azure Build Output
 csx/
@@ -396,3 +399,15 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+
+project.assets.json
+# Ignore project.nuget.cache files
+project.nuget.cache
+
+# Visual Studio / .NET specific
+bin/
+obj/
+*.dll
+*.pdb
+*.cache
