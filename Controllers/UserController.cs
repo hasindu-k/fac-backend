@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ITP_PROJECT.Business;
-using ITP_PROJECT.Models.;
+using ITP_PROJECT.Models;
 
 namespace ITP_PROJECT.Controllers
 {

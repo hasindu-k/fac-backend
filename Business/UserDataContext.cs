@@ -1,4 +1,5 @@
 ﻿using ITP_PROJECT.Controllers;
+using ITP_PROJECT.Models;
 
 namespace ITP_PROJECT.Business
 {
@@ -37,6 +38,11 @@ namespace ITP_PROJECT.Business
             }
 
             return isValid;
+        }
+
+        internal object ValidateUser(UserLoginRequest request)
+        {
+            throw new NotImplementedException();
         }
 
         // Utility method to hash the password (you may want to use a more secure hashing mechanism)
