@@ -1,4 +1,5 @@
 ﻿using ITP_PROJECT.Models;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ITP_PROJECT.Business
 {
@@ -23,7 +24,7 @@ namespace ITP_PROJECT.Business
                 fertilizer.UnitPrice = Convert.ToInt32(reader["UnitPrice"]);
                 fertilizer.MeasurementUnit = reader["MeasurementUnit"].ToString();
                 fertilizer.StockQuantity = Convert.ToInt32(reader["StockQuantity"]);
-                fertilizer.CreationDate = Convert.ToDateTime(reader["CreationDate"]);
+                fertilizer.CreationDate = Convert.ToDateTime(reader["CreationDate"]).Date;
                 fertilizer.LastUpdate = Convert.ToDateTime(reader["LastUpdate"]);
 
                 Fertilizers.Add(fertilizer);
@@ -38,7 +39,7 @@ namespace ITP_PROJECT.Business
         {
             bool isSuccess = false;
 
-            ExecuteNonQuery("INSERT INTO fertilizerList (FName, Description, ApplicationMethod, UnitPrice, MeasurementUnit, StockQuantity, CreationDate, LastUpdate) VALUES (@FName, @Description, @ApplicationMethod, @UnitPrice, @MeasurementUnit, @StockQuantity, GETDATE() , GETDATE() )", // @CreationDate , @LastUpdate
+            ExecuteNonQuery("INSERT INTO fertilizerList (FName, Description, ApplicationMethod, UnitPrice, MeasurementUnit, StockQuantity, CreationDate, LastUpdate) VALUES (@FName, @Description, @ApplicationMethod, @UnitPrice, @MeasurementUnit, @StockQuantity, CAST(GETDATE() AS DATE) , GETDATE() )", // @CreationDate , @LastUpdate
                             cmd =>
                             {
                                 cmd.Parameters.AddWithValue("@FName", obj.FName);
