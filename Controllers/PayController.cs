@@ -5,7 +5,7 @@ namespace ITP_PROJECT.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class PayController : ControllerBase
     {
     }
 }
