@@ -15,24 +15,31 @@ namespace ITP_PROJECT.Business
 
         }
 
-        public List<FeedbackModel> GetAllCusFeedbacks()
+        public List<FeedbackModel> GetCustomerFeedbacks(int fBackCusID)
         {
-            List<FeedbackModel> Feedbacks = new List<FeedbackModel>();
+            List<FeedbackModel> feedbacks = new List<FeedbackModel>();
 
-            ExecuteScalar("SELECT * FROM Feedback", cmd => { }, reader =>
+            string query = "SELECT * FROM Feedback WHERE fBackCusID = @CustomerId";
+
+            ExecuteScalar(query, cmd =>
             {
-                FeedbackModel Feedback = new FeedbackModel();
-                Feedback.fBackID = Convert.ToInt32(reader["fBackID"]);
-                Feedback.fBackCusID = Convert.ToInt32(reader["fBackCusID"]);
-                Feedback.fBackCusName = reader["fBackCusName"].ToString();
-                Feedback.fBackProductID = Convert.ToInt32(reader["fBackProductID"]);
-                Feedback.fBackDescription = reader["fBackDescription"].ToString();
-                Feedback.fBackEmail = reader["fBackEmail"].ToString();
+                cmd.Parameters.AddWithValue("@CustomerId", fBackCusID);
+            }, reader =>
+            {
+                FeedbackModel feedback = new FeedbackModel();
+                feedback.fBackID = Convert.ToInt32(reader["fBackID"]);
+                feedback.fBackCusID = Convert.ToInt32(reader["fBackCusID"]);
+                feedback.fBackCusName = reader["fBackCusName"].ToString();
+                feedback.fBackProductID = Convert.ToInt32(reader["fBackProductID"]);
+                feedback.fBackDescription = reader["fBackDescription"].ToString();
+                feedback.fBackEmail = reader["fBackEmail"].ToString();
 
-                Feedbacks.Add(Feedback);
+                feedbacks.Add(feedback);
             });
-            return Feedbacks;
+
+            return feedbacks;
         }
+
 
         public bool PostCusFeedbacks(FeedbackModel obj)
         {

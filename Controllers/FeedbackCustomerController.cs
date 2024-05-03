@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 using ITP_PROJECT.Business;
 using ITP_PROJECT.Models;
 
-namespace CustomAffair.Controllers
+namespace ITP_PROJECT.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -22,22 +22,22 @@ namespace CustomAffair.Controllers
             FeedbackCustomerDataContext = new FeedbackCustomerDataContext(config);
         }
 
-        [Route("GetAllCusFeedbacks")]
+        [Route("GetCustomerFeedbacks/{customerId}")]
         [HttpGet]
-        public async Task<IActionResult> GetAllCusFeedbacks()
+        public async Task<IActionResult> GetCustomerFeedbacks(int customerId)
         {
             try
             {
-                var feedbacks = FeedbackCustomerDataContext.GetAllCusFeedbacks();
+                var feedbacks = FeedbackCustomerDataContext.GetCustomerFeedbacks(customerId);
                 return Ok(feedbacks);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
                 return StatusCode(500, "Internal Server Error");
-                
             }
         }
+
 
 
         [Route("PostCusFeedbacks")]
