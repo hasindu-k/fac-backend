@@ -4,15 +4,43 @@ using ITP_PROJECT.Models;
 
 namespace ITP_PROJECT.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
-    public class CustomersController : ControllerBase
+    public class CustomerController : ControllerBase
     {
+        private readonly IConfiguration configuration;
         private CustomerDataContext customerDataContext;
 
-        public CustomersController(IConfiguration config)
+        public CustomerController(IConfiguration config)
         {
             customerDataContext = new CustomerDataContext(config);
         }
+
+        [Route("Login")]
+        [HttpPost]
+        public async Task<IActionResult> Login(CustomerLoginRequest request)
+        {
+            try
+            {
+                CustomerDataContext customerDataContext = new CustomerDataContext(configuration);
+                var isValid = customerDataContext.ValidateCustomer(request);
+                if (isValid)
+                {
+                    // Assuming you have a session mechanism to store the logged user's ID or other necessary information.
+                    HttpContext.Session.SetString("LoggedInUserID", request.cusID);
+                    return Ok("Login successful");
+                }
+                else
+                {
+                    return BadRequest("Invalid credentials");
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
+
         [Route("GetAllCustomers")]
         [HttpGet]
 
@@ -31,10 +59,10 @@ namespace ITP_PROJECT.Controllers
         }
 
 
-        [Route("PostCourses")]
+        [Route("PostCustomers")]
         [HttpPost]
 
-        public async Task<IActionResult> PostCustomer(CustomerModel obj)
+        public async Task<IActionResult> PostCustomers(CustomerModel obj)
         {
             bool result = false;
             try
@@ -86,6 +114,31 @@ namespace ITP_PROJECT.Controllers
 
             return Ok(result);
         }
+
+
+        [Route("GetCustomerDetails")]
+        [HttpGet]
+
+        public async Task<IActionResult> GetCustomerDetails(int cusID)
+        {
+            try
+            {
+                var customers = customerDataContext.GetCustomerDetails(cusID);
+                return Ok(customers);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal Server Error");
+            }
+
+        }
     }
+}
+
+public class CustomerLoginRequest
+{
+    public string cusID { get; set; }
+    public string cusPassword { get; set; }
+
 }
 
