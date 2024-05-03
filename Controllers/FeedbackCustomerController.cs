@@ -12,23 +12,23 @@ namespace CustomAffair.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class FeedbackController : ControllerBase
+    public class FeedbackCustomerController : ControllerBase
     {
-        private FeedbackDataContext FeedbackDataContext;
+        private FeedbackCustomerDataContext FeedbackCustomerDataContext;
        
 
-        public FeedbackController(IConfiguration config)
+        public FeedbackCustomerController(IConfiguration config)
         {
-            FeedbackDataContext = new FeedbackDataContext(config);
+            FeedbackCustomerDataContext = new FeedbackCustomerDataContext(config);
         }
 
-        [Route("GetAllFeedbacks")]
+        [Route("GetAllCusFeedbacks")]
         [HttpGet]
-        public async Task<IActionResult> GetAllFeedbacks()
+        public async Task<IActionResult> GetAllCusFeedbacks()
         {
             try
             {
-                var feedbacks = FeedbackDataContext.GetAllFeedbacks();
+                var feedbacks = FeedbackCustomerDataContext.GetAllCusFeedbacks();
                 return Ok(feedbacks);
             }
             catch (Exception ex)
@@ -40,14 +40,14 @@ namespace CustomAffair.Controllers
         }
 
 
-        [Route("PostFeedbacks")]
+        [Route("PostCusFeedbacks")]
         [HttpPost]
-        public async Task<IActionResult> PostFeedbacks(FeedbackModel obj)
+        public async Task<IActionResult> PostCusFeedbacks(FeedbackModel obj)
         {
             bool result = false;
             try
             {
-                result = FeedbackDataContext.PostFeedbacks(obj);
+                result = FeedbackCustomerDataContext.PostCusFeedbacks(obj);
             }
             catch (Exception ex)
             {
@@ -58,14 +58,14 @@ namespace CustomAffair.Controllers
             return Ok(result);
         }
 
-        [Route("UpdateFeedbacks")]
+        [Route("UpdateCusFeedbacks")]
         [HttpPut]
         public async Task<IActionResult> UpdateFeedbacks(FeedbackModel obj)
         {
             bool result = false;
             try
             {
-                result = FeedbackDataContext.UpdateFeedbacks(obj);
+                result = FeedbackCustomerDataContext.UpdateCusFeedbacks(obj);
             }
             catch (Exception ex)
             {
@@ -76,14 +76,14 @@ namespace CustomAffair.Controllers
             return Ok(result);
         }
 
-        [Route("DeleteFeedback/{fBackID}")]
+        [Route("DeleteCusFeedback/{fBackID}")]
         [HttpDelete]
-        public async Task<IActionResult> DeleteFeedback(int fBackID)
+        public async Task<IActionResult> DeleteCusFeedback(int fBackID)
         {
             
             try
             {
-                bool result = FeedbackDataContext.DeleteFeedback(fBackID);
+                bool result = FeedbackCustomerDataContext.DeleteCusFeedback(fBackID);
                 if (result)
                 {
                     return Ok("Leave deleted successfully.");

@@ -1,8 +1,8 @@
-﻿using CustomAffair.Business;
-using CustomAffair.Models;
+﻿using ITP_PROJECT.Business;
+using ITP_PROJECT.Models;
 
 
-namespace CustomAffair.Bussiness
+namespace ITP_PROJECT.Business
 {
     public class ManagerFeedbackDataContext:DataContext
     {

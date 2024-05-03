@@ -1,11 +1,11 @@
 ﻿
-using CustomAffair.Business;
-using CustomAffair.Bussiness;
-using CustomAffair.Models;
+using ITP_PROJECT.Business;
+using ITP_PROJECT;
+using ITP_PROJECT.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CustomAffair.Controllers
+namespace ITP_PROJECT.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

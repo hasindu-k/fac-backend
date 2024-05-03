@@ -1,4 +1,4 @@
-﻿namespace CustomAffair.Models
+﻿namespace ITP_PROJECT.Models
 {
     public class FeedbackModel
     {

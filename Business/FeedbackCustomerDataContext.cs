@@ -8,14 +8,14 @@ using ITP_PROJECT.Models;
 
 namespace ITP_PROJECT.Business
 {
-    public class FeedbackDataContext : DataContext
+    public class FeedbackCustomerDataContext : DataContext
     {
-        public FeedbackDataContext(IConfiguration configuration) : base(configuration)
+        public FeedbackCustomerDataContext(IConfiguration configuration) : base(configuration)
         {
 
         }
 
-        public List<FeedbackModel> GetAllFeedbacks()
+        public List<FeedbackModel> GetAllCusFeedbacks()
         {
             List<FeedbackModel> Feedbacks = new List<FeedbackModel>();
 
@@ -34,7 +34,7 @@ namespace ITP_PROJECT.Business
             return Feedbacks;
         }
 
-        public bool PostFeedbacks(FeedbackModel obj)
+        public bool PostCusFeedbacks(FeedbackModel obj)
         {
             bool isSuccess = false;
 
@@ -56,7 +56,7 @@ namespace ITP_PROJECT.Business
 
 
 
-        public bool UpdateFeedbacks(FeedbackModel obj)
+        public bool UpdateCusFeedbacks(FeedbackModel obj)
         {
             bool isSuccess = false;
 
@@ -77,7 +77,7 @@ namespace ITP_PROJECT.Business
 
         
 
-        public bool DeleteFeedback(int fBackID)
+        public bool DeleteCusFeedback(int fBackID)
         {
             try
             {
