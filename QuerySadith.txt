@@ -1,0 +1,34 @@
+CREATE DATABASE ITP_PROJECT;
+
+CREATE TABLE product (
+    pId INT PRIMARY KEY IDENTITY(1,1),
+	productPhoto VARCHAR(255),
+    pName VARCHAR(50),
+    pDescription VARCHAR(500),
+    avaiStock INT,
+    price FLOAT
+);
+
+
+INSERT INTO product (productPhoto , pName , pDescription , avaiStock , price) VALUES ('C:/Users/sadit/OneDrive/Desktop/ASSINGMENT Y2S2/TEA/tea1.jpg','tea1' ,  'THIS TEA GIVES YOU A ENERGY' ,4 , 2000.00 );
+INSERT INTO product (productPhoto , pName,  pDescription , avaiStock , price) VALUES ('C:/Users/sadit/OneDrive/Desktop/ASSINGMENT Y2S2/TEA/tea2.jpg','tea2' ,  'Description for Product1', 100, 288.00);
+INSERT INTO product (productPhoto , pName , pDescription , avaiStock , price) VALUES ('C:/Users/sadit/OneDrive/Desktop/ASSINGMENT Y2S2/TEA/tea3.jpg','tea3' ,  'THIS TEA GIVES YOU A ENERGY' ,45 , 1500.00 );
+INSERT INTO product (productPhoto , pName , pDescription , avaiStock , price) VALUES ('C:/Users/sadit/OneDrive/Desktop/ASSINGMENT Y2S2/TEA/tea4.jpg','tea4' ,  'THIS TEA GIVES YOU A ENERGY' ,48, 2300.00 );
+INSERT INTO product (productPhoto , pName , pDescription , avaiStock , price) VALUES ('C:/Users/sadit/OneDrive/Desktop/ASSINGMENT Y2S2/TEA/tea5.jpg','tea5' ,  'THIS TEA GIVES YOU A ENERGY' ,24, 400.00 );
+INSERT INTO product (productPhoto , pName , pDescription , avaiStock , price) VALUES ('C:/Users/sadit/OneDrive/Desktop/ASSINGMENT Y2S2/TEA/tea6.jpg','tea6' ,  'THIS TEA GIVES YOU A ENERGY' ,34, 450.00 );
+INSERT INTO product (productPhoto , pName , pDescription , avaiStock , price) VALUES ('C:/Users/sadit/OneDrive/Desktop/ASSINGMENT Y2S2/TEA/tea7.jpg','tea7' ,  'THIS TEA GIVES YOU A ENERGY' ,64, 600.00 );
+INSERT INTO product (productPhoto , pName , pDescription , avaiStock , price) VALUES ('C:/Users/sadit/OneDrive/Desktop/ASSINGMENT Y2S2/TEA/tea8.jpg','tea8' ,  'THIS TEA GIVES YOU A ENERGY' ,12, 550.00 );
+INSERT INTO product (productPhoto , pName , pDescription , avaiStock , price) VALUES ('C:/Users/sadit/OneDrive/Desktop/ASSINGMENT Y2S2/TEA/tea9.jpg','tea9' ,  'THIS TEA GIVES YOU A ENERGY' ,26, 650.00 );
+
+CREATE TABLE cart (
+    cId INT PRIMARY KEY IDENTITY(1,1),
+	pid INT,
+    pName VARCHAR(50),
+    quantity INT,
+    totPrice FLOAT,
+	FOREIGN KEY (pId) REFERENCES product(pId)
+);
+
+
+INSERT INTO cart(pId,pName,quantity) VALUES (76,' Flavour Gift Pack Product'  ,2);
+INSERT INTO cart(pId,pName,quantity) VALUES (80,' Gold Gift Pack OP1 Product'  ,3);
