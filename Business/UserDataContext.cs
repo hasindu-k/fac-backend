@@ -8,6 +8,7 @@ namespace ITP_PROJECT.Business
         public UserDataContext(IConfiguration configuration) : base(configuration)
         {
         }
+        //hsdgag
 
         public List<UserModel> GetAllManagers()
         {
