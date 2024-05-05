@@ -29,6 +29,12 @@ app.UseCors(options =>
     options.AllowAnyMethod();
 });
 
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(Directory.GetCurrentDirectory(), "TEA")),
+    RequestPath = "/TEA"
+});
 
 app.UseEndpoints(endpoints =>
 {
