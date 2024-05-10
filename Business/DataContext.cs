@@ -1,6 +1,6 @@
 ﻿using System.Data.SqlClient;
 
-namespace ITP_PROJECT.Business
+namespace TeaFactory.Business
 {
     public class DataContext
     {
@@ -56,6 +56,11 @@ namespace ITP_PROJECT.Business
                     readData?.Invoke(cmd.ExecuteReader());
                 }
             }
+        }
+
+        internal void Dispose()
+        {
+            throw new NotImplementedException();
         }
     }
 }
