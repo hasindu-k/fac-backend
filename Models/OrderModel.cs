@@ -1,4 +1,4 @@
-﻿namespace TeaFactory.Models
+﻿namespace ITP_PROJECT.Models
 {
     public class OrderModel
     {
