@@ -1,9 +1,9 @@
-﻿using teaFactory.Models;
+﻿using ITP_PROJECT.Models;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 
-namespace teaFactory.Business
+namespace ITP_PROJECT.Business
 {
     public class DriverDataContext : DataContext
     {

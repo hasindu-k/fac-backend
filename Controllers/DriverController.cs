@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using teaFactory.Business;
-using teaFactory.Models;
+using ITP_PROJECT.Business;
+using ITP_PROJECT.Models;
 
-namespace teaFactory.Controllers
+namespace ITP_PROJECT.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

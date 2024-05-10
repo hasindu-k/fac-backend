@@ -1,4 +1,4 @@
-﻿namespace teaFactory.Models
+﻿namespace ITP_PROJECT.Models
 {
     public class DeliveryModel
     {

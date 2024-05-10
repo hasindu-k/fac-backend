@@ -1,8 +1,8 @@
-﻿using teaFactory.Models;
-using teaFactory.Business;
+﻿using ITP_PROJECT.Models;
+using ITP_PROJECT.Business;
 
 
-namespace teaFactory.Business
+namespace ITP_PROJECT.Business
 {
     public class DeliveryDataContext : DataContext
     {
