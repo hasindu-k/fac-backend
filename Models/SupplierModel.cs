@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TeaFactory.Models
+namespace ITP_PROJECT.Models
 {
     public class SupplierModel
     {

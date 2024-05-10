@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Extensions.Configuration;
-using TeaFactory.Models;
+using ITP_PROJECT.Models;
 
-namespace TeaFactory.Business
+namespace ITP_PROJECT.Business
 {
     public class SupplierDataContext : DataContext, IDisposable
     {
