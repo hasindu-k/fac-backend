@@ -1,0 +1,45 @@
+-- Create SupplierDetails table
+CREATE TABLE SupplierDetails (
+    SupplierID INT PRIMARY KEY,
+    SupplierName VARCHAR(100),
+    CompanyName VARCHAR(100),
+    JoinDate DATE,
+    ContactNumber VARCHAR(20),
+    Email VARCHAR(100),
+    Address VARCHAR(255)
+);
+
+-- Insert data
+INSERT INTO SupplierDetails (SupplierID, SupplierName, CompanyName, JoinDate, ContactNumber, Email, Address)
+VALUES
+    (1, 'Pavithra', 'Company A', '2023-01-01', '0714567890', 'pavi@gmail.com', 'No 123, Main Street,Galle'),
+    (2, 'Amal', 'Company B', '2022-12-15', '0776543210', 'amal@gmail.com', 'No 456, Elm St,Galle'),
+    (3, 'Johne', 'Company C', '2023-05-20', '5551234567', 'johne@gmail.com', 'No 789, Oak St,Galle'),
+    (4, 'Kamal', 'Company D', '2024-03-10', '0777123456', 'kamal@gmail.com', 'No 234, Palm St,Galle'),
+    (5, 'Saman', 'Company E', '2024-04-25', '0719876543', 'saman@gmail.com', 'No 567, Maple St,Galle');
+
+
+
+
+
+-- Create OrderDetails table
+CREATE TABLE OrderDetails (
+    OrderID INT PRIMARY KEY IDENTITY,
+    ItemName VARCHAR(255),
+    Quantity INT,
+    UnitPrice DECIMAL(10, 2),
+    OrderState VARCHAR(50),
+    OrderDate DATE,
+    SupplierID INT,
+    CONSTRAINT FK_SupplierID FOREIGN KEY (SupplierID) REFERENCES SupplierDetails(SupplierID)
+);
+
+-- Inserting data into the OrderDetails table
+
+INSERT INTO OrderDetails (ItemName, Quantity, UnitPrice, OrderState, OrderDate, SupplierID)
+VALUES 
+('Green Tea Leaves', 100, 15.00, 'Pending', '2024-05-04', 1),
+('Black Tea Leaves', 200, 20.00, 'Confirmed', '2024-05-05', 2),
+('Tea Bags', 50, 10.00, 'Received', '2024-05-06', 3),
+('Tea Accessories Set', 30, 8.00, 'Rejected', '2024-05-07', 4),
+('Tea Infuser', 40, 5.00, 'Pending', '2024-05-08', 5);
