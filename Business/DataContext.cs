@@ -57,5 +57,10 @@ namespace ITP_PROJECT.Business
                 }
             }
         }
+
+        internal void Dispose()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

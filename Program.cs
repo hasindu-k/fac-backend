@@ -29,7 +29,6 @@ app.UseCors(options =>
     options.AllowAnyMethod();
 });
 
-
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers();
