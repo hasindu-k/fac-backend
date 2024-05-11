@@ -5,10 +5,41 @@ namespace ITP_PROJECT.Business
 {
     public class UserDataContext : DataContext
     {
+        private readonly IConfiguration _configuration;
         public UserDataContext(IConfiguration configuration) : base(configuration)
         {
+            _configuration = configuration;
         }
-        //hsdgag
+
+        public UserModel Authenticate(string managerID, string managerPassword)
+        {
+            UserModel user = null;
+            ExecuteScalar("SELECT * FROM manager WHERE managerID = @managerID AND managerPassword = @managerPassword",
+                cmd =>
+                {
+                    cmd.Parameters.AddWithValue("@managerID", managerID);
+                    cmd.Parameters.AddWithValue("@managerPassword", managerPassword);
+                },
+                reader =>
+                {
+                    if (reader.Read())
+                    {
+                        user = new UserModel
+                        {
+                            managerID = reader["managerID"].ToString(),
+                            managerName = reader["managerName"].ToString(),
+                            managerNIC = reader["NIC"].ToString(),
+                            managerEmail = reader["managerEmail"].ToString(),
+                            managerPhone = reader["managerPhone"].ToString(),
+                            managerType = reader["managerType"].ToString(),
+                            managerPassword = reader["managerPassword"].ToString(),
+                            // Set username and password
+
+                        };
+                    }
+                });
+            return user;
+        }
 
         public List<UserModel> GetAllManagers()
         {
@@ -31,36 +62,6 @@ namespace ITP_PROJECT.Business
             return Managers;
         }
 
-        public bool ValidateUser(UserLoginRequest request)
-        {
-            bool isValid = false;
-
-            try
-            {
-                ExecuteReader("SELECT * FROM manager WHERE managerID = @managerID",
-                    cmd => { cmd.Parameters.AddWithValue("@managerID", request.managerID); },
-                    reader =>
-                    {
-                        if (reader.Read())
-                        {
-                            string storedHashedPassword = reader.GetString(reader.GetOrdinal("managerPassword"));
-                            string hashedPassword = HashPassword(request.managerPassword);
-
-                            if (storedHashedPassword == hashedPassword)
-                            {
-                                isValid = true;
-                            }
-                        }
-                    });
-
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-            return isValid;
-        }
 
         public UserModel GetUserDetails(string userID)
         {
@@ -132,14 +133,7 @@ namespace ITP_PROJECT.Business
             return true; // Assuming delete always succeeds
         }
 
-        // Utility method to hash the password (you may want to use a more secure hashing mechanism)
-        private string HashPassword(string managerPassword)
-        {
-            using (var sha256 = System.Security.Cryptography.SHA256.Create())
-            {
-                byte[] hashedBytes = sha256.ComputeHash(System.Text.Encoding.UTF8.GetBytes(managerPassword));
-                return BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
-            }
-        }
+
+
     }
 }

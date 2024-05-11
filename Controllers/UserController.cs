@@ -17,31 +17,32 @@ namespace ITP_PROJECT.Controllers
             userDataContext = new UserDataContext(config);
         }
 
+
         [Route("Login")]
         [HttpPost]
-        public async Task<IActionResult> Login(UserLoginRequest request)
+        public async Task<IActionResult> Login(string managerID, string managerPassword)
         {
             try
             {
-                UserDataContext userDataContext = new UserDataContext(configuration);
-                var isValid = userDataContext.ValidateUser(request);
-                if (isValid)
-                {
-                    // Assuming you have a session mechanism to store the logged user's ID or other necessary information.
-                    HttpContext.Session.SetString("LoggedInUserID", request.managerID);
-                    return Ok("Login successful");
-                }
-                else
-                {
-                    return BadRequest("Invalid credentials");
-                }
+                // Authenticate user
+                var user = userDataContext.Authenticate(managerID, managerPassword);
+                // if (user != null)
+                // {
+                // Authentication successful
+                return Ok(user);
+                //}
+                /* else
+                 {
+                     // Authentication failed
+                     return Unauthorized("Invalid username or password");
+                 }*/
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 return StatusCode(500, "Internal Server Error");
             }
         }
-
 
 
         [Route("GetAllManagers")]
@@ -117,10 +118,4 @@ namespace ITP_PROJECT.Controllers
             return Ok(result);
         }
     }
-}
-
-public class UserLoginRequest
-{
-    public string managerID { get; set; }
-    public string managerPassword { get; set; }
 }
