@@ -22,6 +22,13 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(Directory.GetCurrentDirectory(), "TEA")),
+    RequestPath = "/TEA"
+});
+
 app.UseCors(options =>
 {
     options.AllowAnyOrigin();
