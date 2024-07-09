@@ -22,6 +22,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+//
 app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider(
