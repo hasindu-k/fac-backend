@@ -11,7 +11,7 @@ namespace ITP_PROJECT.Models
        // public string Description { get; set; }
         public string PaymentMethod { get; set; } // Required property
         public int Amount { get; set; }
-        //public DateTime Timestamp { get; set; }
+        public DateTime Timestamp { get; set; }
 
     }
 }

@@ -28,7 +28,7 @@ namespace ITP_PROJECT.Business
                     payment.ProductID = Convert.ToInt32(reader["ProductID"]);
                     payment.PaymentMethod = reader["PaymentMethod"].ToString();
                     payment.Amount = Convert.ToInt32(reader["Amount"]);
-                    //payment.Timestamp = Convert.ToDateTime(reader["Timestamp"]);
+                    payment.Timestamp = Convert.ToDateTime(reader["Timestamp"]);
                
 
                     payments.Add(payment);
@@ -52,7 +52,7 @@ namespace ITP_PROJECT.Business
                     cmd.Parameters.AddWithValue("@ProductID", obj.ProductID);
                     cmd.Parameters.AddWithValue("@PaymentMethod", obj.PaymentMethod);
                     cmd.Parameters.AddWithValue("@Amount", obj.Amount);
-                   // cmd.Parameters.AddWithValue("@Timestamp", obj.Timestamp);
+                    cmd.Parameters.AddWithValue("@Timestamp", obj.Timestamp);
 
 
                     isSuccess = true;
